@@ -16,13 +16,13 @@ public class Prompter {
 			System.out.print("Enter a letter:  ");
 			String guessInput = scanner.nextLine();
 					
-        try {
-          isHit = game.applyGuess(guessInput);
-          isAcceptable = true;    // will remain true if there is an IllegalArgumentException
-        } catch (IllegalArgumentException iae) {
-        System.out.printf("%s. Please try again. %n",
-                iae.getMessage());
-			}
+			try {
+			  isHit = game.applyGuess(guessInput);
+			  isAcceptable = true;   
+			} catch (IllegalArgumentException iae) {
+			System.out.printf("%s. Please try again. %n",
+				iae.getMessage());
+					}
 		} while (! isAcceptable);
 		return isHit;
 		
@@ -40,7 +40,7 @@ public class Prompter {
 			System.out.printf("Congratulations you won with %d tries remaining. %n", 
 								game.getRemainingTries());
 		} else {
-			System.out.printf("Bummer the word was %s.   :( %n",
+			System.out.printf("Bummer the word was %s.  :( %n",
 								game.getAnswer());
 		}
 	}
